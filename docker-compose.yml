@@ -1,0 +1,16 @@
+version: "3.8"
+services:
+  myapp:
+    image: creampanda/yadro_currency_app:${VERSION:-1.1.0}
+    build:
+      context: .
+      args:
+        PYTHON_VERSION: "3.10"
+        PORT: ${PORT:-8000}
+        VERSION: ${VERSION:-1.1.0}
+    ports:
+      - "${PORT:-8000}:${PORT:-8000}"
+    environment:
+      - PORT=${PORT:-8000}
+      - VERSION=${VERSION:-1.1.0}
+    restart: unless-stopped
